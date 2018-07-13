@@ -1,0 +1,4 @@
+*.log
+build/assets/*.zip
+build/assets/*.xml
+build/assets/*.ml
