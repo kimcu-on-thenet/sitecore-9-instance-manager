@@ -15,6 +15,8 @@ These script that will help us reduce the complexity of installing process. Now 
 
 ## Getting Started
 
+### Prepare to install
+
 1. Clone the repository to your local (i.e `D:\github\sitecore-9-instance-manager`)
 2. Extract the downloaded Sitecore packages, copy the following files to **`build\assets` ** folder in cloned repository folder
     1. Sitecore 9.0.0 rev. 171002 (OnPrem)_single.scwdp.zip
@@ -24,16 +26,27 @@ These script that will help us reduce the complexity of installing process. Now 
     5. Sitecore 9.0.2 rev. 180604 (OnPrem)_single.scwdp.zip
     6. Sitecore 9.0.2 rev. 180604 (OnPrem)_xp0xconnect.scwdp.zip
 3. Copy your Sitecore license file (license.xml) to **`build\assets` **
-4. Open the **PowerShell Window** as **Administrator**
-5. Change the directory to cloned repository by the **`cd`** command
+
+
+**_After copied the above files, the `build\assets` look likes_**
+
+![build/assets](documents/build-assets-folder.png)
+
+### Install
+
+1. Open the **PowerShell Window** as **Administrator**
+2. Change the directory to cloned repository by the **`cd`** command
     `cd  D:\github\sitecore-9-instance-manager`
-6. Execute the **`sc-install.ps1`** script with the following information
+3. Execute the **`sc-install.ps1`** script with the following information
 
     - Install instance for Sitecore 9.0.0
+
     `.\sc-install.ps1 -scversion "9.0.0" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
     - Install instance for Sitecore 9.0.1
+
     `.\sc-install.ps1 -scversion "9.0.1" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
     - Install instance for Sitecore 9.0.2
+    
     `.\sc-install.ps1 -scversion "9.0.2" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
 
 
@@ -47,7 +60,7 @@ These script that will help us reduce the complexity of installing process. Now 
     - `solrRoot`: the path of Solr instance (i.e `D:\\_solr`)
     - `scwebroot`: the path of IIS's wwwroot (i.e. `D:\Inetpub\wwwroot`)
 
-7. Finally, let verify the instance on the browser
+4. Finally, let verify the instance on the browser
 
 ## Uninstall the specific Sitecore's instance
 
