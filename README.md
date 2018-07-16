@@ -37,17 +37,17 @@ These script that will help us reduce the complexity of installing process. Now 
 1. Open the **PowerShell Window** as **Administrator**
 2. Change the directory to cloned repository by the **`cd`** command
     `cd  D:\github\sitecore-9-instance-manager`
-3. Execute the **`sc-install.ps1`** script with the following information
+3. Execute the **`sc-install-xp0.ps1`** script with the following information
 
     - Install instance for Sitecore 9.0.0
 
-    `.\sc-install.ps1 -scversion "9.0.0" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
+    `.\sc-install-xp0.ps1 -scversion "9.0.0" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
     - Install instance for Sitecore 9.0.1
 
-    `.\sc-install.ps1 -scversion "9.0.1" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
+    `.\sc-install-xp0.ps1 -scversion "9.0.1" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
     - Install instance for Sitecore 9.0.2
     
-    `.\sc-install.ps1 -scversion "9.0.2" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
+    `.\sc-install-xp0.ps1 -scversion "9.0.2" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
 
 
     **Notes:**
@@ -64,9 +64,9 @@ These script that will help us reduce the complexity of installing process. Now 
 
 ## Uninstall the specific Sitecore's instance
 
-To uninstall completely the specific Sitecore's instance, just simply use the `sc-uninstall.ps1` script with the following script
+To uninstall completely the specific Sitecore's instance, just simply use the `sc-uninstall-xp0.ps1` script with the following script
 
-`.\sc-uninstall.ps1 -scversion "9.0.1" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -scwebroot "D:\Inetpub\wwwroot"`
+`.\sc-uninstall-xp0.ps1 -scversion "9.0.1" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -scwebroot "D:\Inetpub\wwwroot"`
 
 ## Additional Information
 
