@@ -2,16 +2,24 @@
 
 As far as we know, from the first release of Sitecore 9 (Initial Release), it's used SIF (Sitecore Installation Framework) to install the new instance. However, the installation process now is not as simple as preceding version (Sitecore 8x). If the new instance of Sitecore 8x can be installed by SIM tool, we have to be familiar with PowerShell script to install the new instance of Sitecore 9.0 because SIF is implemented on PowerShell.
 
-These script that will help us reduce the complexity of installing process. Now you can run only one command via **PowerShell Window** within your configuration values. It supports for the following Sitecore's version
+This repo aims to reduce the complexity of installing process, by passing the configurations from the PowerShell Command Line. It's only supported for **XP Single (XP0)** of **On Premises** deployment option with the following versions
 
 - 9.0.0 - Initial Release
 - 9.0.1 - Update 1
 - 9.0.2 - Update 2
 
+**Notes:** The XP0 packages of On Premises
+
+![Packages of XP Single (XP0) of On Premises](documents/Sitecore-OnPremises-XP0.png)
+
 ## Pre-Requisites
 
 1. Sitecore 9 requires **Solr** and running on **SSL**. There are many way to install **Solr**, but my purpose is trying to experiment the newest technology which [Docker](https://www.docker.com/). Hence, it requires to install **Solr** via docker and also running in **SSL**. Please use another repository from mine to install [Solr-Docker]( https://github.com/kimcu-on-thenet/solr-docker)
-2. Download one or 3 versions ([9.0 Initial Release](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Initial_Release.aspx), [9.0 update 1](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Update1.aspx), [9.0 update 2](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Update2.aspx))
+2. Download one or all 3 version of Sitecore, please note that these packages should be **Packages for XP Single**
+    - [9.0 Initial Release](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Initial_Release.aspx)
+    - [9.0 update 1](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Update1.aspx)
+    - [9.0 update 2](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Update2.aspx)
+    
 
 ## Getting Started
 
