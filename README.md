@@ -14,8 +14,8 @@ This repo aims to reduce the complexity of installing process, by passing the co
 
 ## Pre-Requisites
 
-1. Sitecore 9 requires **Solr** and running on **SSL**. There are many way to install **Solr**, but my purpose is trying to experiment the newest technology which [Docker](https://www.docker.com/). Hence, it requires to install **Solr** via docker and also running in **SSL**. Please use another repository from mine to install [Solr-Docker]( https://github.com/kimcu-on-thenet/solr-docker)
-2. Download one or all 3 version of Sitecore, please note that these packages should be **Packages for XP Single**
+1. Install Solr with SSL through [Docker](https://www.docker.com/) by using my repository [Solr-Docker]( https://github.com/kimcu-on-thenet/solr-docker). After that, let suppose that the path of Solr's data folder is - `E:\github\solr-docker\SolrData` (it'll be used for installing Sitecore in next step).
+3. Download one or all 3 version of Sitecore, please note that these packages should be **Packages for XP Single**
     - [9.0 Initial Release](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Initial_Release.aspx)
     - [9.0 update 1](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Update1.aspx)
     - [9.0 update 2](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Update2.aspx)
@@ -45,17 +45,18 @@ This repo aims to reduce the complexity of installing process, by passing the co
 1. Open the **PowerShell Window** as **Administrator**
 2. Change the directory to cloned repository by the **`cd`** command
     `cd  D:\github\sitecore-9-instance-manager`
-3. Execute the **`sc-install-xp0.ps1`** script with the following information
+3. Supposed that, the folder of Solr's data is located at - `E:\github\solr-docker\SolrData` 
+4. Execute the **`sc-install-xp0.ps1`** script with the following information
 
     - Install instance for Sitecore 9.0.0
 
-    `.\sc-install-xp0.ps1 -scversion "9.0.0" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
+    `.\sc-install-xp0.ps1 -scversion "9.0.0" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "[the-SolrData-path]" -scwebroot "[IIS-wwwroot]"`
     - Install instance for Sitecore 9.0.1
 
-    `.\sc-install-xp0.ps1 -scversion "9.0.1" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
+    `.\sc-install-xp0.ps1 -scversion "9.0.1" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "[the-SolrData-path]" -scwebroot "[IIS-wwwroot]"`
     - Install instance for Sitecore 9.0.2
     
-    `.\sc-install-xp0.ps1 -scversion "9.0.2" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "D:\\_solr" -scwebroot "D:\Inetpub\wwwroot"`
+    `.\sc-install-xp0.ps1 -scversion "9.0.2" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "[the-SolrData-path]" -scwebroot "[IIS-wwwroot]"`
 
 
     **Notes:**
@@ -65,16 +66,16 @@ This repo aims to reduce the complexity of installing process, by passing the co
     - `sqlServer`: _(optional)_ Default is **localhost**
     - `sqlAdminUser`: _(optional)_ Default is **sa**
     - `sqlAdminPassword`: the password of **sqlAdminUser**
-    - `solrRoot`: the path of Solr instance (i.e `D:\\_solr`)
+    - `solrRoot`: the path of Solr instance (i.e `E:\\github\\solr-docker\\SolrData`)
     - `scwebroot`: the path of IIS's wwwroot (i.e. `D:\Inetpub\wwwroot`)
 
-4. Finally, let verify the instance on the browser
+5. Finally, let verify the instance on the browser
 
 ## Uninstall the specific Sitecore's instance
 
 To uninstall completely the specific Sitecore's instance, just simply use the `sc-uninstall-xp0.ps1` script with the following script
 
-`.\sc-uninstall-xp0.ps1 -scversion "9.0.1" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -scwebroot "D:\Inetpub\wwwroot"`
+`.\sc-uninstall-xp0.ps1 -scversion "9.0.1" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -scwebroot "[IIS-wwwroot]"`
 
 ## Additional Information
 
