@@ -2,4 +2,4 @@
 build/assets/*.zip
 build/assets/*.xml
 build/assets/*.ml
-build/Certificates
+build/assets/Certificates
