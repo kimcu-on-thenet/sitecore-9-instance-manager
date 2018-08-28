@@ -43,7 +43,7 @@ $SitecoreSiteRoot = Join-Path $webroot -ChildPath $SitecoreSiteName
 
 $XConnectSiteName = "${SolutionPrefix}_xconnect.$SitePostFix"
 $XConnectSiteRoot = Join-Path $webroot -ChildPath $XConnectSiteName
-$XConnectCert = "$SolutionPrefix.$SitePostFix.xConnect.Client"
+$XConnectCert = "$SitecoreSiteName.xConnect.Client"
 
 
 # Solr Parameters
@@ -57,7 +57,6 @@ Write-Host " xConnect: $XConnectSiteName" -ForegroundColor Green
 Write-Host "*******************************************************" -ForegroundColor Green
 
 Import-Module "$PSScriptRoot\build\uninstall\uninstall.psm1" -Force
-#Import-Module SitecoreInstallFramework -RequiredVersion $InstallerVersion
 
 #Install SIF
 $module = Get-Module -FullyQualifiedName @{ModuleName="SitecoreInstallFramework";ModuleVersion=$InstallerVersion}
@@ -84,6 +83,8 @@ $database = Get-SitecoreDatabase -SqlServer $SqlServer -SqlAdminUser $SqlAdminUs
 Remove-SitecoreWindowsService "$XConnectSiteName-MarketingAutomationService"
 Remove-SitecoreWindowsService "$XConnectSiteName-IndexWorker"
 
+# Delete xconnect server certificate
+Remove-SitecoreCertificate $XConnectSiteName
 # Delete xconnect site
 Remove-SitecoreIisSite $XConnectSiteName
 
@@ -102,10 +103,11 @@ Remove-SitecoreDatabase -Name "${SolutionPrefix}_Messaging" -Server $database
 # Delete xconnect files
 Remove-SitecoreFiles $XConnectSiteRoot
 
-# Delete xconnect server certificate
-Remove-SitecoreCertificate $XConnectSiteName
 # Delete xconnect client certificate
-Remove-SitecoreCertificate $XConnectCert
+Remove-Certs $XConnectCert $XConnectCert
+
+# Delete sitecore certificate
+Remove-SitecoreCertificate $SitecoreSiteName
 
 # Delete sitecore site
 Remove-SitecoreIisSite $SitecoreSiteName
@@ -118,9 +120,6 @@ Remove-SitecoreDatabase -Name "${SolutionPrefix}_Web" -Server $database
 
 # Delete sitecore files
 Remove-SitecoreFiles $SitecoreSiteRoot
-
-# Delete sitecore certificate
-Remove-SitecoreCertificate $SitecoreSiteName
 
 # Remove Solr indexes
 Remove-SitecoreSolrCore -SolrUrl $SolrUrl -SolutionPrefix $SolutionPrefix

@@ -31,8 +31,17 @@ function Remove-SitecoreDatabase(
 }
 
 function Remove-SitecoreCertificate($certificateName) {
+    $bindingHosts = Get-WebBinding -Name $certificateName -Protocol https | ForEach-Object { 
+        $hostname = $_.BindingInformation.Split(":")[-1]
+        Write-Host $hostname
 
-    $cert = Get-ChildItem -Path "cert:\LocalMachine\My" | Where-Object { $_.subject -like "CN=$certificateName" }
+        Remove-Certs $certificateName $hostname
+    }
+}
+
+function Remove-Certs ($certificateName, $hostname) {
+    
+    $cert = Get-ChildItem -Path "cert:\LocalMachine\My" | Where-Object { $_.subject -like "CN=$hostname" }
     if ($cert -and $cert.Thumbprint) {
         $certPath = "cert:\LocalMachine\My\" + $cert.Thumbprint
         Remove-Item $certPath

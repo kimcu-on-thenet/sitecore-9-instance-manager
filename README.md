@@ -19,7 +19,6 @@ This repo aims to reduce the complexity of installing process, by passing the co
     - [9.0 Initial Release](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Initial_Release.aspx)
     - [9.0 update 1](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Update1.aspx)
     - [9.0 update 2](https://dev.sitecore.net/en/Downloads/Sitecore_Experience_Platform/90/Sitecore_Experience_Platform_90_Update2.aspx)
-    
 
 ## Getting Started
 
@@ -34,7 +33,6 @@ This repo aims to reduce the complexity of installing process, by passing the co
     5. Sitecore 9.0.2 rev. 180604 (OnPrem)_single.scwdp.zip
     6. Sitecore 9.0.2 rev. 180604 (OnPrem)_xp0xconnect.scwdp.zip
 3. Copy your Sitecore license file (license.xml) to **`build\assets` **
-
 
 **_After copied the above files, the `build\assets` look likes_**
 
@@ -55,9 +53,8 @@ This repo aims to reduce the complexity of installing process, by passing the co
 
     `.\sc-install-xp0.ps1 -scversion "9.0.1" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "[the-SolrData-path]" -scwebroot "[IIS-wwwroot]"`
     - Install instance for Sitecore 9.0.2
-    
+  
     `.\sc-install-xp0.ps1 -scversion "9.0.2" -instanceName "habitat" -sqlServer "localhost" -sqlAdminUser "sa" -sqlAdminPassword "[your-sa-password]" -solrRoot "[the-SolrData-path]" -scwebroot "[IIS-wwwroot]"`
-
 
     **Notes:**
 
@@ -70,6 +67,12 @@ This repo aims to reduce the complexity of installing process, by passing the co
     - `scwebroot`: the path of IIS's wwwroot (i.e. `D:\Inetpub\wwwroot`)
 
 5. Finally, let verify the instance on the browser
+
+## Add new site and its bindings
+
+`.\sc-add-newsite.ps1 -scversion "9.0.2" -instanceName "habitat" -scwebroot "[IIS-wwwroot]" -hostname "[new-host-name]"`
+
+- It will add new bindings include `http` and `https`
 
 ## Uninstall the specific Sitecore's instance
 
