@@ -68,7 +68,7 @@ $SitecoreSiteRoot = Join-Path $webroot -ChildPath $SitecoreSiteName
 # Solr Parameters
 $SolrUrl = "https://localhost:8983/solr"
 $SolrRoot = $solrRoot
-
+$SolrService = "NO-NEED"
 
 function Install-Prerequisites {
     #Verify SQL version
@@ -303,6 +303,26 @@ function Install-Sitecore {
     }
 }
 
+Function Add-AppPoolMembership {
+
+    #Add ApplicationPoolIdentity to performance log users to avoid Sitecore log errors (https://kb.sitecore.net/articles/404548)
+    
+    try {
+        Add-LocalGroupMember "Performance Log Users" "IIS AppPool\$($SitecoreSiteName)"
+        Write-Host "Added IIS AppPool\$($SitecoreSiteName) to Performance Log Users" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "Warning: Couldn't add IIS AppPool\$($site.hostName) to Performance Log Users -- user may already exist" -ForegroundColor Yellow
+    }
+    try {
+        Add-LocalGroupMember "Performance Monitor Users" "IIS AppPool\$($SitecoreSiteName)"
+        Write-Host "Added IIS AppPool\$($SitecoreSiteName) to Performance Monitor Users" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "Warning: Couldn't add IIS AppPool\$($SitecoreSiteName) to Performance Monitor Users -- user may already exist" -ForegroundColor Yellow
+    }
+}
+
 
 Write-Host "*******************************************************" -ForegroundColor Green
 Write-Host " Installing Sitecore $SitecorePackagesVersion" -ForegroundColor Green
@@ -313,4 +333,5 @@ Write-Host "*******************************************************" -Foreground
     Install-Assets
     Install-XConnect
     Install-Sitecore
+    Add-AppPoolMembership
     Remove-Logs

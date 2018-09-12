@@ -134,3 +134,26 @@ function Remove-SitecoreSolrCore {
     Write-Host "Removed successfully Sitecore Solr Cores."
 
 }
+
+
+Function Remove-AppPoolUser([string] $sitename)
+{
+    try 
+    {
+        Remove-LocalGroupMember "Performance Log Users" "IIS AppPool\$($sitename)"
+        Write-Host "Removed IIS AppPool\$($sitename) from Performance Log Users" -ForegroundColor Green
+    }
+    catch 
+    {
+        Write-Host "Could not find IIS AppPool\$($sitename) in Performance Log Users" -ForegroundColor Yellow
+    }
+    try 
+    {
+        Remove-LocalGroupMember "Performance Monitor Users" "IIS AppPool\$($sitename)"
+        Write-Host "Removed IIS AppPool\$($sitename) from Performance Monitor Users" -ForegroundColor Green
+    }
+    catch 
+    {
+        Write-Host "Could not find IIS AppPool\$($sitename) to Performance Monitor Users" -ForegroundColor Yellow
+    }
+}

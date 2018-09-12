@@ -47,8 +47,7 @@
         "Solr.FullRoot":    "[resolvepath(parameter('SolrRoot'))]",
 
         // Resolves the full solr folder path on disk.
-        "Solr.Server":      "[variable('Solr.FullRoot')]",
-
+        "Solr.Server":      "[joinpath(variable('Solr.FullRoot'), 'server', 'solr')]",
 
         // Resolves the full path for the base configset to use for each core.
         "Solr.BaseConfigs": "[joinpath(variable('Solr.Server'), 'configsets', parameter('BaseConfig'))]",
@@ -67,7 +66,15 @@
         // By default, tasks are applied in the order they are declared.
         // Tasks may reference Parameters, Variables, and config functions. 
 
-        
+        "StopSolr": {
+            // Stops the Solr service if it is running.
+            "Type": "ManageService",
+            "Params": {
+                "Name": "[parameter('SolrService')]",
+                "Status": "Stopped",
+                "PostDelay": 1000
+            }
+        },
         "CleanCores": {
             // Creates/clears core paths.
             "Type": "EnsurePath",
@@ -86,7 +93,15 @@
                 { "Source": "[joinpath(variable('Solr.BaseConfigs'), '*')]", "Destination": "[variable('Rebuild.Root')]" }
             ]
         },
-        
+        "StartSolr": {
+            // Starts the Solr service.
+            "Type": "ManageService",
+            "Params": {
+                "Name": "[parameter('SolrService')]",
+                "Status": "Running",
+                "PostDelay": 8000
+            }
+        },
         "CreateCores":{
             // Tells Solr to create the new cores.
             "Type": "ManageSolrCore",

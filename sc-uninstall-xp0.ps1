@@ -123,3 +123,5 @@ Remove-SitecoreFiles $SitecoreSiteRoot
 
 # Remove Solr indexes
 Remove-SitecoreSolrCore -SolrUrl $SolrUrl -SolutionPrefix $SolutionPrefix
+
+Remove-AppPoolUser $SitecoreSiteName

@@ -43,7 +43,7 @@ This repo aims to reduce the complexity of installing process, by passing the co
 1. Open the **PowerShell Window** as **Administrator**
 2. Change the directory to cloned repository by the **`cd`** command
     `cd  D:\github\sitecore-9-instance-manager`
-3. Supposed that, the folder of Solr's data is located at - `E:\github\solr-docker\SolrData` 
+3. Supposed that, the folder of Solr's data is located at - `E:\github\solr-docker\SolrData`
 4. Execute the **`sc-install-xp0.ps1`** script with the following information
 
     - Install instance for Sitecore 9.0.0
